@@ -120,6 +120,7 @@ function displayMenuItems(menu) {
     sectionElement.innerHTML = sectionContent;
 }
 
+// Add all categories to UI
 function displayCategoryItems() {
     
     categoryElement.innerHTML = `<button type="button" class="filter-btn" data-id="all">all</button>`;
@@ -139,18 +140,21 @@ function displayCategoryItems() {
     const categoryButtons = document.querySelectorAll('.filter-btn');
 
     categoryButtons.forEach(item => {
-        item.addEventListener('click', e =>{
-            
-            const selectedCategoryName = e.target.getAttribute('data-id');
+        item.addEventListener('click', filter);
+    });
+}
+
+// Filter foods according to category
+function filter(e) {
+    const selectedCategoryName = e.target.getAttribute('data-id');
 
             const filteredMenu = menu.filter(item => {
                 item.category === selectedCategoryName;
             });
-        });
 
-        if(selectedCategoryName === 'all') displayCategoryItems(menu);
-        else displayMenuItems(filteredMenu);
-    });
+            
+            if(selectedCategoryName === 'all') displayMenuItems(menu);
+            else displayMenuItems(filteredMenu);
 }
 
 
