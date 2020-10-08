@@ -146,22 +146,10 @@ function displayCategoryItems() {
 
 // Filter foods according to category
 function filter(e) {
-    const selectedCategoryName = e.target.getAttribute('data-id');
+    const selectedCategoryName = e.target.getAttribute("data-id");
 
-            const filteredMenu = menu.filter(item => {
-                item.category === selectedCategoryName;
-            });
-
-            
-            if(selectedCategoryName === 'all') displayMenuItems(menu);
-            else displayMenuItems(filteredMenu);
+    const filteredMenu = menu.filter(item => item.category === selectedCategoryName);
+    
+    if(selectedCategoryName === 'all') displayMenuItems(menu);
+    else displayMenuItems(filteredMenu);
 }
-
-
-
-
-
-
-
-
-
