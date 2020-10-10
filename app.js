@@ -85,9 +85,10 @@ const menu = [
 /*  Elements   */
 const sectionElement = document.querySelector('.section-center');
 const categoryElement = document.querySelector('.btn-container');
-
+const spanElement = document.querySelectorAll(".close")[0];
 /*  EventListeners   */
 window.addEventListener('DOMContentLoaded', load);
+spanElement.addEventListener('click', closeModal);
 
 /*****   Functions   *****/
 
@@ -101,11 +102,11 @@ function load() {
 function displayMenuItems(menu) {
 
     let sectionContent = '';
-    
+
     menu.forEach(item => {
         sectionContent += `
         <article class="menu-item">
-            <img src=${item.img} alt="menu item" class="photo" />
+            <img src=${item.img} alt="${item.title}" class="photo" />
             <div class="item-info">
                 <header>
                     <h4>${item.title}</h4>
@@ -118,18 +119,22 @@ function displayMenuItems(menu) {
     });
 
     sectionElement.innerHTML = sectionContent;
+
+    const imageElement = document.querySelectorAll('.photo');
+
+    imageElement.forEach(item => item.addEventListener('click', showModal));
 }
 
 // Add all categories to UI
 function displayCategoryItems() {
-    
+
     categoryElement.innerHTML = `<button type="button" class="filter-btn" data-id="all">all</button>`;
     let categories = [];
 
     // Create category list
     menu.forEach(item => {
         const index = categories.indexOf(item.category);
-        if(index === -1) categories.push(item.category);
+        if (index === -1) categories.push(item.category);
     });
 
     // Create Category Buttons
@@ -145,11 +150,23 @@ function displayCategoryItems() {
 }
 
 // Filter foods according to category
-function filter(e) {
+function filter({target}) {
     const selectedCategoryName = e.target.getAttribute("data-id");
 
     const filteredMenu = menu.filter(item => item.category === selectedCategoryName);
-    
-    if(selectedCategoryName === 'all') displayMenuItems(menu);
+
+    if (selectedCategoryName === 'all') displayMenuItems(menu);
     else displayMenuItems(filteredMenu);
+}
+
+// Show Modal
+function showModal({target}) {
+    document.querySelector("#modal").style.display = "block";;
+    document.querySelector("#img01").src = target.src;
+    document.querySelector("#caption").innerHTML = target.alt;
+}
+
+// Close Modal
+function closeModal() {
+    modal.style.display = "none";
 }
