@@ -35,16 +35,13 @@ You're sections headers will be used to reference location of destination.
 - Git
 
 
-[Back To The Top](#translate-app)
+[Back To The Top](#restaurant-menu-page)
 
 ---
 
 ## Author Info
 
 - Medium - [@mr.tarik.ozturk](https://medium.com/@mr.tarik.ozturk)
-<!-- 
-- Twitter - [............](............)
-- Website - [............](............) 
--->
 
-[Back To The Top](#translate-app)
+
+[Back To The Top](#restaurant-menu-page)
