@@ -151,7 +151,7 @@ function displayCategoryItems() {
 
 // Filter foods according to category
 function filter({target}) {
-    const selectedCategoryName = e.target.getAttribute("data-id");
+    const selectedCategoryName = target.getAttribute("data-id");
 
     const filteredMenu = menu.filter(item => item.category === selectedCategoryName);
 
